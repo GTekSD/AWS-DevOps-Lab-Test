@@ -1,4 +1,5 @@
 #script to create an AWS instance as well as an ElasticSearch configuration
+""" To make the script in the example work, you need to replace the placeholders in the access policies and cognitooptions sections with your own credentials and access information. Additionally, you will need to update the subnetids and securitygroupids fields with the IDs of your own subnets and security groups. Finally, you will need to update the volumesize and automatedsnapshotstarthour fields with values that fit your needs. """
 
 provider "aws" {
   access_key = "AKIA3A23DESMYCEG4DVU"
