@@ -1,3 +1,4 @@
+#used to create an Amazon Web Services (AWS) instance.
 
 provider "aws" {
   access_key = "AKIA3A23DESMYCEG4DVU"
