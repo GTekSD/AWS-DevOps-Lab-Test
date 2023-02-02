@@ -16,12 +16,13 @@ resource "aws_elasticsearch_domain" "example" {
   domain_name     = "example"
   elasticsearch_version = "7.10"
 
-  cluster_config {
-    instance_type            = "m4.large.elasticsearch"
-    instance_count           = 3
-    dedicated_master_enabled = true
-    zone_awareness_enabled   = true
-  }
+cluster_config {
+  instance_type            = "t2.small.elasticsearch"
+  instance_count           = 3
+  dedicated_master_enabled = false
+  zone_awareness_enabled   = false
+  cluster.initial_master_nodes = ["node1.example.com", "node2.example.com", "node3.example.com"]
+}
 
   access_policies = <<POLICY
 {
