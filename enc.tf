@@ -2,17 +2,27 @@
 
 provider "aws" {
   region = "us-east-1"
+  access_key = "AKIA3A23DECEG4DVU"
+  secret_key = "rc4DXkL978/YJF7ZgjHAcsaAaWMNzo78cE"
+}
+
 }
 
 resource "aws_elasticsearch_domain" "example" {
-  domain_name     = "example"
-  elasticsearch_version = "7.4"
+  domain_name = "example-elasticsearch"
+
+  elasticsearch_version = "7.9"
 
   cluster_config {
-    instance_type            = "m4.large.elasticsearch"
-    instance_count           = 3
-    dedicated_master_enabled = true
-    zone_awareness_enabled   = true
+    instance_type            = "t2.small.elasticsearch"
+    instance_count           = 2
+    dedicated_master_enabled = false
+    zone_awareness_enabled   = false
+  }
+
+  ebs_options {
+    ebs_enabled = true
+    volume_size = 10
   }
 
   access_policies = <<POLICY
@@ -20,25 +30,32 @@ resource "aws_elasticsearch_domain" "example" {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::111122223333:root"
-      },
       "Action": "es:*",
-      "Resource": "arn:aws:es:us-east-1:111122223333:domain/example/*"
+      "Principal": "*",
+      "Effect": "Allow",
+      "Resource": "arn:aws:es:us-east-1:*:domain/example-elasticsearch/*"
     }
   ]
 }
 POLICY
-
-  advanced_options {
-    "rest.action.multi.allow_explicit_index" = "true"
-    "http.cors.enabled"                     = "true"
-    "http.cors.allow-origin"                = "*"
+  
+  snapshot_options {
+    automated_snapshot_start_hour = 23
   }
 
-  domain_endpoint_options {
-    enforce_https = true
-    tls_security_policy = "Policy-Min-TLS-1-2-2019-07"
+  vpc_options {
+    subnet_ids = ["subnet-12345678", "subnet-87654321"]
+    security_group_ids = ["sg-12345678"]
+  }
+
+  advanced_options = {
+    "rest.action.multi.allow_explicit_index" = "true"
+  }
+
+  cognito_options {
+    enabled = true
+    user_pool_id = "us-east-1_12345678"
+    identity_pool_id = "us-east-1:12345678-1234-1234-1234-123456789012"
+    role_arn = "arn:aws:iam::123456789012:role/Cognito_ExampleUnauth_Role"
   }
 }
