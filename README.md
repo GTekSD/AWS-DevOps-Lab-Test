@@ -27,4 +27,4 @@ put detailed information in the instructions. The exercise will be 2.5 hours.
 
 4. ElasticSearch access and communication must be secure
 
-Bonus if you extend your code to create a cluster of 3 ElasticSearch nodes.
+**Bonus:** if you extend your code to create a cluster of 3 ElasticSearch nodes.
