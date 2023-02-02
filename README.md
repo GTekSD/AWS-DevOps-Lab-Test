@@ -30,7 +30,6 @@ put detailed information in the instructions. The exercise will be 2.5 hours.
 **Bonus:** if you extend your code to create a cluster of 3 ElasticSearch nodes.
 
 
-====================================
 # User Manual
 
 ## Elasticsearch.tf manual
@@ -39,39 +38,41 @@ Elasticsearch.tf is a Terraform configuration file that creates an Amazon Elasti
 The following steps will guide you through the process of creating an Elasticsearch domain using Terraform.
 
 ### Prerequisites:
+- Terraform installed on your local machine
+- AWS account with required permissions to create Elasticsearch domain and associated resources
+- Access key and secret key of your AWS account
 
-Terraform installed on your local machine
-AWS account with required permissions to create Elasticsearch domain and associated resources
-Access key and secret key of your AWS account
-Step 1: Clone or create a new Terraform configuration file with the name Elasticsearch.tf.
+**Step 1:** Clone or create a new Terraform configuration file with the name Elasticsearch.tf.
 
-Step 2: Edit the file to include the AWS provider block, where you specify the AWS credentials and region to be used for the creation of resources.
+**Step 2:** Edit the file to include the AWS provider block, where you specify the AWS credentials and region to be used for the creation of resources.
 
-Step 3: Add the resource block to create an Amazon Elasticsearch domain. You need to specify the following in the resource block:
+**Step 3:** Add the resource block to create an Amazon Elasticsearch domain. You need to specify the following in the resource block:
+- Domain name
+- Elasticsearch version
+- Cluster configuration
+- EBS options
+- Access policies
+- Snapshot options
+- VPC options
+- Advanced options
+- Cognito options
 
-Domain name
-Elasticsearch version
-Cluster configuration
-EBS options
-Access policies
-Snapshot options
-VPC options
-Advanced options
-Cognito options
-Step 4: Run the following command in the terminal to initialize the Terraform environment and download the required plugins:
-
-csharp
-Copy code
+**Step 4:** Run the following command in the terminal to initialize the Terraform environment and download the required plugins:
+```
 terraform init
-Step 5: Verify the Terraform plan with the following command:
+```
 
-Copy code
+**Step 5:** Verify the Terraform plan with the following command:
+```
 terraform plan
-Step 6: If the plan looks good, apply the changes with the following command:
+```
 
-Copy code
+**Step 6:** If the plan looks good, apply the changes with the following command:
+```
 terraform apply
-Step 7: After the apply command has completed successfully, you can access the Elasticsearch domain in your AWS environment.
+```
+
+**Step 7:** After the apply command has completed successfully, you can access the Elasticsearch domain in your AWS environment.
 
 Note: You can use the Terraform state file to manage and update the resources in the future.
 
@@ -81,35 +82,36 @@ EC2_instance.tf is a Terraform configuration file that creates an Amazon EC2 ins
 
 ### Prerequisites:
 
-Terraform installed on your local machine
-AWS account with required permissions to create EC2 instances
-Access key and secret key of your AWS account
-Step 1: Clone or create a new Terraform configuration file with the name EC2_instance.tf.
+- Terraform installed on your local machine
+- AWS account with required permissions to create EC2 instances
+- Access key and secret key of your AWS account
 
-Step 2: Edit the file to include the AWS provider block, where you specify the AWS credentials and region to be used for the creation of resources.
+**Step 1:** Clone or create a new Terraform configuration file with the name EC2_instance.tf.
 
-Step 3: Add the resource block to create an Amazon EC2 instance. You need to specify the following in the resource block:
+**Step 2:** Edit the file to include the AWS provider block, where you specify the AWS credentials and region to be used for the creation of resources.
 
-Amazon Machine Image (AMI) ID
-Instance type
-Step 4: Run the following command in the terminal to initialize the Terraform environment and download the required plugins:
+**Step 3:** Add the resource block to create an Amazon EC2 instance. You need to specify the following in the resource block:
+- Amazon Machine Image (AMI) ID
+- Instance type
 
-csharp
-Copy code
+**Step 4:** Run the following command in the terminal to initialize the Terraform environment and download the required plugins:
+```
 terraform init
-Step 5: Verify the Terraform plan with the following command:
+```
 
-Copy code
+**Step 5:** Verify the Terraform plan with the following command:
+```
 terraform plan
-Step 6: If the plan looks good, apply the changes with the following command:
+```
 
-Copy code
+**Step 6:** If the plan looks good, apply the changes with the following command:
+```
 terraform apply
-Step 7: After the apply command has completed successfully, you can access the EC2 instance in your AWS environment.
+```
 
-Note: You can use the Terraform state file to manage and update the resources in the future.
+**Step 7:** After the apply command has completed successfully, you can access the EC2 instance in your AWS environment.
 
-====================================
+**Note:** You can use the Terraform state file to manage and update the resources in the future.
 
 
 # Refrences:
