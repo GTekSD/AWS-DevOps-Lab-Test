@@ -32,3 +32,4 @@ put detailed information in the instructions. The exercise will be 2.5 hours.
 
 # Refrences:
 https://cloud-images.ubuntu.com/locator/ec2/
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs
